@@ -4,12 +4,8 @@ export default function Home() {
   return (
 		<>
 			<Head>
-				<title>IG News</title>
+				<title>ig.news</title>
 			</Head>
-
-			<h1>
-				Hello World
-			</h1>
 		</>
   );
 }
