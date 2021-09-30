@@ -1,9 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import { SubscribeButton } from '../components/SubscribeButton';
-import { GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next';
 import { stripe } from '../services/stripe';
 import Head from 'next/head';
 import styles from './home.module.scss';
+
+// Client Side
+// Server Side
+// Static Site Generation
 
 interface HomeProps {
 	product: {
@@ -36,7 +40,7 @@ export default function Home({ product }: HomeProps) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
 	const price = await stripe.prices.retrieve('price_1JfQFhGoEXArfJdxT7QkrnBt');
 
 	const product = {
@@ -50,6 +54,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 	return {
 		props: {
 			product: product,
-		}
+		},
+		revalidate: 60 * 60 * 24, // 24 Hours
 	};
 }
