@@ -8,6 +8,10 @@ npm run dev
 yarn dev
 ```
 
+and 
+
+stripe listen --forward-to localhost:3000/api/webhooks
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Configure .env.local
